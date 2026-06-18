@@ -33,8 +33,10 @@
 
 package maxgoodsubarraysum
 
+import "math"
+
 func maximumSubarraySum(nums []int, k int) int64 {
-	var maxSum int64
+	maxSum := int64(math.MinInt64)
 
 	for start := 0; start < len(nums); start++ {
 		var sum int64 = 0
