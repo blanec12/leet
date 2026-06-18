@@ -42,7 +42,7 @@ func maximumSubarraySum(nums []int, k int) int64 {
 
 			sum += int64(nums[end])
 
-			if absDiff(nums[start], nums[end]) == k {
+			if abs(nums[start]-nums[end]) == k {
 				if sum > maxSum {
 					maxSum = sum
 				}
@@ -52,10 +52,9 @@ func maximumSubarraySum(nums []int, k int) int64 {
 	return maxSum
 }
 
-func absDiff(x int, y int) int {
-	diff := x - y
-	if diff < 0 {
-		return -diff
+func abs(x int) int {
+	if x < 0 {
+		return -x
 	}
-	return diff
+	return x
 }
