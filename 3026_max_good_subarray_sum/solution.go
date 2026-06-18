@@ -51,6 +51,12 @@ func maximumSubarraySum(nums []int, k int) int64 {
 			}
 		}
 	}
+
+	// we never found a valid subarray
+	if maxSum == int64(math.MinInt64) {
+		return 0
+	}
+
 	return maxSum
 }
 
