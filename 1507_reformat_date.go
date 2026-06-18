@@ -35,7 +35,6 @@ package main
 import (
 	"fmt"
 	"strings"
-	"unicode"
 )
 
 var monthMap = map[string]string{
@@ -56,43 +55,21 @@ var monthMap = map[string]string{
 func reformatDate(date string) string {
 	parts := strings.Fields(date)
 
-	day := dayNumberPart(parts[0])
-	month := monthNumberPart(parts[1])
+	day := parts[0]
+	month := parts[1]
 	year := parts[2]
 
-	return year + "-" + month + "-" + day
-}
-
-func dayNumberPart(s string) string {
-	var day []rune
-
-	for _, r := range s {
-		if unicode.IsDigit(r) {
-			day = append(day, r)
-		}
+	dayNumber := day[:len(day)-2]
+	if len(dayNumber) == 1 {
+		dayNumber = "0" + dayNumber
 	}
 
-	result := string(day)
-
-	if len(result) == 1 {
-		result = "0" + result
-	}
-
-	return result
-}
-
-func monthNumberPart(month string) string {
-	mm, ok := monthMap[month]
-	if !ok {
-		return ""
-	}
-	return mm
+	return year + "-" + monthMap[month] + "-" + dayNumber
 }
 
 func main() {
 	date := "20th Oct 2052"
 	fmt.Println(reformatDate(date))
-
 	date = "6th Jun 1933"
 	fmt.Println(reformatDate(date))
 
