@@ -30,10 +30,9 @@
 //
 //     The given dates are guaranteed to be valid, so no error handling is necessary.
 
-package main
+package reformatedate
 
 import (
-	"fmt"
 	"strings"
 )
 
@@ -65,14 +64,4 @@ func reformatDate(date string) string {
 	}
 
 	return year + "-" + monthMap[month] + "-" + dayNumber
-}
-
-func main() {
-	date := "20th Oct 2052"
-	fmt.Println(reformatDate(date))
-	date = "6th Jun 1933"
-	fmt.Println(reformatDate(date))
-
-	date = "26th May 1960"
-	fmt.Println(reformatDate(date))
 }
