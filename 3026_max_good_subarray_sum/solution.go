@@ -35,6 +35,7 @@ package maxgoodsubarraysum
 
 import "math"
 
+// This solution is too slow and doesn't pass the problem
 func maximumSubarraySum(nums []int, k int) int64 {
 	maxSum := int64(math.MinInt64)
 
